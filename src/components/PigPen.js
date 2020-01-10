@@ -38,12 +38,18 @@ export default class PigPen extends React.Component {
     ))
   }
 
+  componentDidUpdate() {
+    if (this.state.environment === "inhospitable") {
+      const timer = setInterval(this.relax, 2000)
+    }
+  }
+
   render() {
     const sheeple = this.generateSheeple()
     return(
       <div id="pig-pen">
         {sheeple}
-        <GalaxySNote7 environment={null} alterEnvironment={null} />
+        <GalaxySNote7 environment={this.state.environment} alterEnvironment={this.alterEnvironment} />
       </div>
     )
   }
