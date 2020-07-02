@@ -1,19 +1,14 @@
-import React from "react"
-import exclamation from "../assets/exclamation.png"
+import React from "react";
+import exclamation from "../assets/exclamation.png";
 
 export default class Pig extends React.Component {
+  exclaim = () => <img className="exclamation" src={exclamation} alt="" />;
 
-
-  panic = () => {
-    return this.props.environment === 'inhospitable' ? <img className="exclamation" src={exclamation} alt="" /> : null
-
-  }
-    
   render() {
-    return(
+    return (
       <div id={this.props.name} className="sheeple">
-        {this.panic()}  
+        {this.props.environment === "inhospitable" ? this.exclaim() : null}
       </div>
-    )
+    );
   }
 }
